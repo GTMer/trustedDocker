@@ -40,7 +40,7 @@ func main() {
 	arg0 := "inspect"
 
 	arg1 := os.Args[1]
-
+        fmt.Println(arg1)
 	cmd := exec.Command(app, arg0, arg1)
 	stdout, err := cmd.Output()
 
@@ -101,14 +101,15 @@ func main() {
 	fmt.Println("***")
 	remoteRoot := getRoot("http://localhost:8080")
 	fmt.Println(remoteRoot)
-	vc, err := t.VerifyContent(remoteRoot)
+	vc, err := t.VerifyContent(TestContent{x:remoteRoot})
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	fmt.Println(vc)
 	if vc == true {
-		Cmd("docker run -it " + arg1, true)
+                Cmd("openstack appcontainer run --net network=b1c73230-95af-48f3-9891-7a4399bafd17 " + arg1, true)
+		//Cmd("docker run -it " + arg1, true)
 	}
 
 
