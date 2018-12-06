@@ -5,6 +5,7 @@ import (
 	//"html"
 	"log"
 	"os/exec"
+        //"reflect"
 	"net/http"
 	"github.com/gorilla/mux"
 )
@@ -26,7 +27,7 @@ func main() {
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, "Welcome!")
+    fmt.Fprintln(w, "30b8d47eae26a3b0bf989cbbb199d29eca19dc133a9ed208c455874c")
 }
 
 func TodoShow(w http.ResponseWriter, r *http.Request) {
@@ -46,7 +47,7 @@ func TodoShow(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-    fmt.Fprintln(w, "Todo show:", stdout)
+    fmt.Fprintln(w,  string(stdout[:]))
 }
 
 func Cmd(cmd string, shell bool) []byte {
